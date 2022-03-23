@@ -13,8 +13,8 @@ class BL_EnteteSerializer(serializers.HyperlinkedModelSerializer):
         model = BL_Entete
         fields = (
             'url',
+            'pk',
             'bl_num',
-            'lignes',
             'bl_cial',
             'bl_date',
             'bl_dateimport',
@@ -27,16 +27,18 @@ class BL_EnteteSerializer(serializers.HyperlinkedModelSerializer):
             'bl_cpliv',
             'bl_villeliv',
             'bl_observ',
-            'bl_comment'
+            'bl_comment',
+            'lignes',
         )
 
 class BL_LigneSerializer(serializers.HyperlinkedModelSerializer):
     bli_bl_num = serializers.SlugRelatedField(queryset=BL_Entete.objects.all(),
-    slug_field='bl_num')
+                                              slug_field='bl_num')
     class Meta:  
         model = BL_Ligne
         fields = (
             'url',
+            'pk',
             'bli_bl_num',
             'bli_num',
             'bli_select',
@@ -46,6 +48,6 @@ class BL_LigneSerializer(serializers.HyperlinkedModelSerializer):
             'bli_observ',
             'bli_comment',
             'bli_pu',
-            'bli_unite'
+            'bli_unite',
         )
 

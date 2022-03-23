@@ -6,8 +6,8 @@ from django.shortcuts import render
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.decorators import api_view
+#from django.views.decorators.csrf import csrf_exempt
+#from rest_framework.decorators import api_view
 from wprod.models import BL_Entete, BL_Ligne
 from wprod.serializers import BL_EnteteSerializer, BL_LigneSerializer
 from django.views.decorators.csrf import csrf_exempt
@@ -37,6 +37,6 @@ class ApiRoot(generics.GenericAPIView):
     name = 'api-root'
     def get(self, request, *args, **kwargs):
         return Response({
-            'bls': reverse(BL_EnteteList.name,request=request),
-            'bli': reverse(BL_LigneList.name, request=request),
+            'entetes': reverse(BL_EnteteList.name,request=request),
+            'lignes': reverse(BL_LigneList.name, request=request),
         })

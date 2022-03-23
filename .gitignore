@@ -1,0 +1,9 @@
+restful01/.env
+log.md
+.venv
+.vscode
+db.sqlite3
+drones.accdb
+*.mdb
+*.zip
+manage.py

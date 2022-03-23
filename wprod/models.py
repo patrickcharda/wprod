@@ -6,7 +6,7 @@ from djmoney.models.fields import MoneyField
 
 class BL_Entete(models.Model):
     bl_num = models.BigIntegerField(primary_key=True) # CLE PRIMAIRE
-    bl_cial = models.CharField(max_length=30, blank=True, null=True)
+    bl_cial = models.CharField(max_length=30, blank=True, null=True, default='M.Test')
     bl_date = models.DateTimeField(blank=True, null=True)
     bl_dateimport = models.DateTimeField(blank=True, null=True)
     bl_nomclient = models.CharField(max_length=50, null=True, blank=True)
@@ -24,7 +24,7 @@ class BL_Entete(models.Model):
         ordering = ('bl_num',)
     
     def __str__(self):
-        return self.bl_num + " " + self.bl_nomclient + " " + self.bl_chantier + " " + self.bl_villeliv
+        return str(self.bl_num)
     
 class BL_Ligne(models.Model):
     UNITE_CHOICES = [
@@ -61,6 +61,6 @@ class BL_Ligne(models.Model):
         ordering = ('bli_num', 'bli_codeproduit')
         
     def __str__(self):
-        return "N°ligne: " + self.bli_num + "N°bl: " + self.bli_bl_num + "Pdt: " + self.bli_codeproduit
+        return "N°ligne: " + str(self.bli_num) 
     
     
