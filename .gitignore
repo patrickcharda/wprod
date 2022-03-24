@@ -7,3 +7,11 @@ drones.accdb
 *.mdb
 *.zip
 manage.py
+wprod/__pycache__/views.cpython-310.pyc
+wprod/__pycache__/urls.cpython-310.pyc
+wprod/__pycache__/serializers.cpython-310.pyc
+wprod/__pycache__/models.cpython-310.pyc
+wprod/BT_WPROD.ldb
+wprod/__pycache__/custompagination.cpython-310.pyc
+
+

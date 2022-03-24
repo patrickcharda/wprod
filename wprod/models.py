@@ -21,10 +21,10 @@ class BL_Entete(models.Model):
     bl_comment = models.TextField(max_length=2000, blank=True, null=True)
     
     class Meta:
-        ordering = ('bl_num',)
+        ordering = ('-bl_num',)
     
     def __str__(self):
-        return str(self.bl_num)
+        return "N° de BL: " + str(self.bl_num)
     
 class BL_Ligne(models.Model):
     UNITE_CHOICES = [
@@ -58,7 +58,7 @@ class BL_Ligne(models.Model):
     )
     
     class Meta:
-        ordering = ('bli_num', 'bli_codeproduit')
+        ordering = ('-bli_bl_num', '-bli_num', 'bli_codeproduit')
         
     def __str__(self):
         return "N°ligne: " + str(self.bli_num) 
