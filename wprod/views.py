@@ -8,7 +8,8 @@ from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from wprod.models import BL_Entete, BL_Ligne
 from wprod.serializers import BL_EnteteSerializer, BL_LigneSerializer
-#from rest_framework import permissions
+from rest_framework import permissions
+
 
 
 class BL_EnteteList(generics.ListCreateAPIView):
@@ -24,12 +25,17 @@ class BL_EnteteList(generics.ListCreateAPIView):
     ordering_fields = (
         'bl_num','bl_nomclient','bl_chantier','bl_villeliv',
     )
-    
+    permission_classes = (
+    permissions.IsAuthenticated,
+    )
 
 class BL_EnteteDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = BL_Entete.objects.all()
     serializer_class = BL_EnteteSerializer
     name='bl_entete-detail'
+    permission_classes = (
+    permissions.IsAuthenticated,
+    )
 
 class BL_LigneList(generics.ListCreateAPIView):
     queryset = BL_Ligne.objects.all()
@@ -44,12 +50,18 @@ class BL_LigneList(generics.ListCreateAPIView):
     ordering_fields = (
         'bli_bl_num','bli_num','bli_codeproduit',
     )
+    permission_classes = (
+    permissions.IsAuthenticated,
+    )
     
 
 class BL_LigneDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = BL_Ligne.objects.all()
     serializer_class = BL_LigneSerializer
     name='bl_ligne-detail'
+    permission_classes = (
+    permissions.IsAuthenticated,
+    )
  
 class ApiRoot(generics.GenericAPIView):
     name = 'api-root'
@@ -58,3 +70,4 @@ class ApiRoot(generics.GenericAPIView):
             'entetes': reverse(BL_EnteteList.name,request=request),
             'lignes': reverse(BL_LigneList.name, request=request),
         })
+    

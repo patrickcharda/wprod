@@ -30,7 +30,8 @@ urlpatterns = [
     re_path(r'^admin/', admin.site.urls),
     #re_path(r'^', include('drones.urls')),
     re_path(r'^wprod/', include('wprod.urls')),
-    re_path(r'^api-auth/', include('rest_framework.urls')),
-    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    #re_path(r'^api-auth/', include('rest_framework.urls')),
+    path('login/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('refresh-token/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    path('token-verify',jwt_views.TokenVerifyView.as_view(), name='token-verify'),
 ]

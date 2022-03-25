@@ -151,7 +151,7 @@ CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', cast=Csv())
 REST_FRAMEWORK = {
 	#'DEFAULT_PAGINATION_CLASS':'rest_framework.pagination.LimitOffsetPagination',
 	'DEFAULT_PAGINATION_CLASS': 'wprod.custompagination.LimitOffsetPaginationWithUpperBound',
-	'PAGE_SIZE':4,
+	'PAGE_SIZE':15,
 	'DEFAULT_FILTER_BACKENDS': (
 		'django_filters.rest_framework.DjangoFilterBackend',
 		'rest_framework.filters.OrderingFilter',
@@ -162,6 +162,8 @@ REST_FRAMEWORK = {
         #'rest_framework.authentication.SessionAuthentication',
         # JWT
 		'rest_framework_simplejwt.authentication.JWTAuthentication',
+		'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
         )
 }
 
