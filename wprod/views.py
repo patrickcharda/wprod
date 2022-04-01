@@ -9,10 +9,13 @@ from rest_framework.reverse import reverse
 from wprod.models import BL_Entete, BL_Ligne
 from wprod.serializers import BL_EnteteSerializer, BL_LigneSerializer
 from rest_framework import permissions
+from rest_framework.throttling import ScopedRateThrottle
 
 
 
 class BL_EnteteList(generics.ListCreateAPIView):
+    throttle_scope = 'bl_entete-list'
+    throttle_classes = (ScopedRateThrottle,)
     queryset = BL_Entete.objects.all()
     serializer_class = BL_EnteteSerializer
     name='bl_entete-list'
@@ -64,6 +67,8 @@ class BL_LigneDetail(generics.RetrieveUpdateDestroyAPIView):
     )
  
 class ApiRoot(generics.GenericAPIView):
+    throttle_scope = 'api-root'
+    throttle_classes = (ScopedRateThrottle,)
     name = 'api-root'
     def get(self, request, *args, **kwargs):
         return Response({
