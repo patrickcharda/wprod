@@ -15,8 +15,10 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG',cast=bool)
 
-#ALLOWED_HOSTS = ['localhost','127.0.0.1','192.168.1.16','*']
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+ALLOWED_HOSTS = ['localhost','127.0.0.1','192.168.1.16','*']
+#ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_HEADERS='*'
 
 
 # Application definition
@@ -140,6 +142,7 @@ STATIC_URL = '/static/'
 ] """
 
 CORS_ALLOWED_ORIGINS = config('CORS_ALLOWED_ORIGINS', cast=Csv())
+CORS_ALLOW_CREDENTIALS = config('CSRF_ALLOW_CREDENTIALS', cast=bool)
 
 """ CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5500",

@@ -75,4 +75,11 @@ class ApiRoot(generics.GenericAPIView):
             'entetes': reverse(BL_EnteteList.name,request=request),
             'lignes': reverse(BL_LigneList.name, request=request),
         })
+
+class Hello(generics.GenericAPIView):
+    name = "hello"
+    def get(self, request, *args, **kwargs):
+        return Response({
+            'hello': 'hello',
+        })
     
